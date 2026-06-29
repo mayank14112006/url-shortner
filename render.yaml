@@ -1,0 +1,32 @@
+services:
+  # FastAPI Backend Web Service
+  - type: web
+    name: url-shortener-service
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: url-shortener-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: url-shortener-redis
+          property: connectionString
+      - key: BASE_URL
+        sync: false # Set this to your service's deployed URL
+      - key: SECRET_KEY
+        generateValue: true
+
+  # Redis Cache Service
+  - type: redis
+    name: url-shortener-redis
+    ipAllowList: [] # Private network access only
+
+# PostgreSQL Database Service
+databases:
+  - name: url-shortener-db
+    databaseName: url_shortener
+    user: postgres
