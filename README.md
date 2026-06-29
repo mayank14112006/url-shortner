@@ -111,3 +111,32 @@ Make sure you have python 3.8+ installed, along with running PostgreSQL and Redi
     *   **Frontend UI**: Visit `http://localhost:8000/` in your browser.
     *   **Swagger API Docs**: Visit `http://localhost:8000/docs`.
     *   **Redoc API Docs**: Visit `http://localhost:8000/redoc`.
+
+---
+
+## Cloud Deployment Instructions
+
+### Option 1: Render (Zero-Config Blueprint)
+The repository is equipped with a `render.yaml` Blueprint file for automatic configuration:
+1. Log in to [Render](https://dashboard.render.com/).
+2. Click **New +** and select **Blueprint**.
+3. Connect your GitHub repository `url-shortner`.
+4. Render will automatically detect the blueprint and provision:
+   * A FastAPI web service.
+   * A PostgreSQL database.
+   * A Redis instance.
+5. In the Render Dashboard, open the web service, navigate to **Environment**, and update the `BASE_URL` value to your newly deployed Render Web Service URL (e.g. `https://url-shortener-service.onrender.com`).
+
+### Option 2: Railway
+1. Log in to [Railway](https://railway.app/).
+2. Create a **New Project** and choose **Deploy from GitHub repository**.
+3. Select your `url-shortner` repository.
+4. Click **+ Add** -> **Database** -> **PostgreSQL**, and **+ Add** -> **Database** -> **Redis**.
+5. Bind environment variables for your web service to refer to the PostgreSQL and Redis instances (Railway automatically links them if they share a project, or you can use variables like `DATABASE_URL` referencing PostgreSQL connection strings).
+
+### Option 3: Docker / Docker Compose
+Deploy on any VPS using the provided docker-compose configuration:
+```bash
+docker compose up -d --build
+```
+
