@@ -1,4 +1,4 @@
-# Antigravity URL Shortener
+# Swift Links URL Shortener
 
 A high-performance URL shortener featuring a secure JSON Web Token (JWT) user authentication flow, Base62 numeric ID encoding, Redis caching for microsecond redirects, and a highly polished dark-themed single-page dashboard.
 

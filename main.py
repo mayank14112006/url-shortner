@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 # Initialize FastAPI application
 app = FastAPI(
-    title="Antigravity URL Shortener",
+    title="Swift Links URL Shortener",
     description="A high-performance URL shortener using FastAPI, PostgreSQL, and Redis cache.",
     version="1.0.0"
 )
