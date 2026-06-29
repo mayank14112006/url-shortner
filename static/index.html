@@ -824,8 +824,10 @@
 
     <!-- Frontend logic scripts -->
     <script>
-        // API Base URL detection
-        const API_BASE = window.location.origin;
+        // API Base URL detection - points to the Render backend when hosted on Vercel/external platforms
+        const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.origin.includes("onrender.com"))
+            ? window.location.origin
+            : "https://url-shortner-6q4t.onrender.com";
 
         // Application State
         let token = localStorage.getItem('access_token');
