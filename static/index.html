@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity Links | Premium URL Shortener</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(17, 24, 39, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --primary-gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --glow-color: rgba(139, 92, 246, 0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Glowing background blobs */
+        .bg-blob {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.45;
+            pointer-events: none;
+        }
+        .blob-1 {
+            background: var(--accent-purple);
+            top: 10%;
+            left: 15%;
+            animation: float-blob 20s infinite alternate;
+        }
+        .blob-2 {
+            background: var(--accent-pink);
+            bottom: 15%;
+            right: 15%;
+            animation: float-blob 25s infinite alternate-reverse;
+        }
+
+        @keyframes float-blob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -30px) scale(1.1); }
+            100% { transform: translate(-30px, 40px) scale(0.9); }
+        }
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .logo i {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .user-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+        }
+
+        .user-email {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .btn-logout {
+            background: transparent;
+            border: none;
+            color: var(--error-color);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: var(--transition);
+        }
+
+        .btn-logout:hover {
+            opacity: 0.8;
+            transform: translateX(2px);
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+            padding: 0 1.5rem 4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            z-index: 10;
+        }
+
+        /* Glassmorphic Container */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            box-shadow: 0 8px 32px 0 var(--glow-color);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Auth Screen */
+        .auth-container {
+            max-width: 450px;
+            margin: 4rem auto;
+            width: 100%;
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--card-border);
+            margin-bottom: 2rem;
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .auth-tab.active {
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--accent-purple);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            color: var(--text-secondary);
+        }
+
+        input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.8rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* URL Shortener Form */
+        .shortener-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .shortener-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .input-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .expiry-toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            user-select: none;
+        }
+
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--text-secondary);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .checkbox-custom i {
+            font-size: 0.7rem;
+            color: transparent;
+        }
+
+        .expiry-toggle-container.active .checkbox-custom {
+            border-color: var(--accent-purple);
+            background: var(--accent-purple);
+        }
+
+        .expiry-toggle-container.active .checkbox-custom i {
+            color: white;
+        }
+
+        .expiry-input-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .expiry-input-wrapper.open {
+            max-height: 150px;
+        }
+
+        /* Result Display Card */
+        .result-card {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-title {
+            font-weight: 700;
+            color: var(--success-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .result-url-box {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .result-url-box input {
+            padding-left: 1rem;
+            flex: 1;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: white;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-copy {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            padding: 0.9rem 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-copy:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        /* Dashboard Section */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .dashboard-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-refresh {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .btn-refresh:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Table Design */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            padding: 1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--card-border);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--card-border);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .original-url-cell {
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--text-secondary);
+        }
+
+        .short-url-link {
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .short-url-link:hover {
+            color: var(--accent-pink);
+            text-decoration: underline;
+        }
+
+        .click-badge {
+            background: rgba(139, 92, 246, 0.15);
+            color: #c084fc;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+        }
+
+        .expiry-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .expiry-active {
+            background: rgba(16, 185, 129, 0.1);
+            color: #34d399;
+        }
+
+        .expiry-expired {
+            background: rgba(239, 44, 44, 0.1);
+            color: #f87171;
+        }
+
+        .expiry-permanent {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .btn-table-copy {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 0.4rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-table-copy:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .empty-state i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Notification Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            z-index: 100;
+        }
+
+        .toast {
+            background: rgba(17, 24, 39, 0.9);
+            border-left: 4px solid var(--accent-purple);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: 280px;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 4.7s forwards;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .toast.success {
+            border-left-color: var(--success-color);
+        }
+
+        .toast.error {
+            border-left-color: var(--error-color);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateY(10px); }
+        }
+
+        /* Loading spinner inside button */
+        .spinner {
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--card-border);
+            z-index: 10;
+        }
+
+        footer a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--accent-pink);
+        }
+
+        /* Responsive Breakpoints */
+        @media(max-width: 640px) {
+            .glass-card {
+                padding: 1.5rem;
+            }
+            main {
+                padding: 0 1rem 3rem 1rem;
+            }
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            header {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background decorative animations -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-bolt"></i> Antigravity Links
+        </div>
+        <div id="userStatus" class="user-status" style="display: none;">
+            <span class="user-email" id="currentUserEmail"></span>
+            <button class="btn-logout" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+        </div>
+    </header>
+
+    <!-- App Container -->
+    <main>
+        
+        <!-- AUTH SECTION -->
+        <div class="glass-card auth-container" id="authSection">
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</div>
+                <div class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">Register</div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="name@domain.com" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required autocomplete="current-password">
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" id="btnLoginSubmit">
+                    <span>Log In</span>
+                    <i class="fa-solid fa-circle-notch spinner" id="loginSpinner"></i>
+                </button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" style="display: none;">
+                <div class="form-group">
+                    <label for="registerEmail">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="registerEmail" placeholder="name@domain.com" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password (min. 6 chars)</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="registerPassword" placeholder="••••••••" minlength="6" required autocomplete="new-password">
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" id="btnRegisterSubmit">
+                    <span>Create Account</span>
+                    <i class="fa-solid fa-circle-notch spinner" id="registerSpinner"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- MAIN URL SHORTENER SECTION (Hidden by default until logged in) -->
+        <div class="glass-card" id="shortenerSection" style="display: none;">
+            <h1 class="shortener-title">Shorten Your Destination</h1>
+            <p class="shortener-desc">Create powerful, trackable, and lightning-fast short codes.</p>
+            
+            <form id="shortenForm">
+                <div class="input-row">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="originalUrl">Target URL</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-link"></i>
+                            <input type="text" id="originalUrl" placeholder="https://example.com/very-long-path-name" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="expiry-toggle-container" id="expiryToggleBtn" onclick="toggleExpiryInput()">
+                            <span class="checkbox-custom"><i class="fa-solid fa-check"></i></span>
+                            <span style="font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);">Set URL Expiry Date (Optional)</span>
+                        </div>
+                        
+                        <div class="expiry-input-wrapper" id="expiryInputWrapper">
+                            <div class="form-group" style="margin-top: 1rem; margin-bottom: 0;">
+                                <label for="expiryDate">Expires At</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <input type="datetime-local" id="expiryDate" style="padding-left: 2.8rem;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit" style="margin-top: 0.5rem;" id="btnShortenSubmit">
+                        <span>Generate Short Link</span>
+                        <i class="fa-solid fa-circle-notch spinner" id="shortenSpinner"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Results Card -->
+            <div class="result-card" id="resultCard">
+                <div class="result-title">
+                    <i class="fa-solid fa-circle-check"></i> Shortened Link Created!
+                </div>
+                <div class="result-url-box">
+                    <input type="text" id="resultUrl" readonly>
+                    <button class="btn-copy" onclick="copyResultUrl()" title="Copy to clipboard">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DASHBOARD SECTION (Hidden by default until logged in) -->
+        <div class="glass-card" id="dashboardSection" style="display: none;">
+            <div class="dashboard-header">
+                <div class="dashboard-title">
+                    <i class="fa-solid fa-chart-simple" style="color: var(--accent-purple);"></i> Your Shortened Links
+                </div>
+                <button class="btn-refresh" onclick="fetchDashboardData()">
+                    <i class="fa-solid fa-rotate-right"></i> Refresh
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table id="linksTable">
+                    <thead>
+                        <tr>
+                            <th>Original Link</th>
+                            <th>Short Link</th>
+                            <th>Clicks</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="linksTableBody">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <footer>
+        <p>&copy; 2026 Antigravity Links. Engineered with <i class="fa-solid fa-heart" style="color: var(--accent-pink);"></i> for high speed redirects.</p>
+    </footer>
+
+    <!-- Frontend logic scripts -->
+    <script>
+        // API Base URL detection
+        const API_BASE = window.location.origin;
+
+        // Application State
+        let token = localStorage.getItem('access_token');
+        let currentEmail = localStorage.getItem('user_email');
+        let isExpiryEnabled = false;
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            updateAuthState();
+            
+            // Event Listeners
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+            document.getElementById('shortenForm').addEventListener('submit', handleShorten);
+            document.getElementById('btnLogout').addEventListener('click', handleLogout);
+
+            // Set default minimum datetime-local to now for the expiry field
+            const expiryField = document.getElementById('expiryDate');
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            expiryField.min = now.toISOString().slice(0, 16);
+        });
+
+        // Toggle Expiry Input display
+        function toggleExpiryInput() {
+            const wrapper = document.getElementById('expiryInputWrapper');
+            const btn = document.getElementById('expiryToggleBtn');
+            isExpiryEnabled = !isExpiryEnabled;
+            
+            if (isExpiryEnabled) {
+                btn.classList.add('active');
+                wrapper.classList.add('open');
+            } else {
+                btn.classList.remove('active');
+                wrapper.classList.remove('open');
+                document.getElementById('expiryDate').value = '';
+            }
+        }
+
+        // Switch Auth Register/Login Tabs
+        function switchAuthTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const tabLogin = document.getElementById('tabLogin');
+            const tabRegister = document.getElementById('tabRegister');
+
+            if (tab === 'login') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                tabLogin.classList.add('active');
+                tabRegister.classList.remove('active');
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                tabLogin.classList.remove('active');
+                tabRegister.classList.add('active');
+            }
+        }
+
+        // Update UI based on authentication status
+        function updateAuthState() {
+            const authSection = document.getElementById('authSection');
+            const shortenerSection = document.getElementById('shortenerSection');
+            const dashboardSection = document.getElementById('dashboardSection');
+            const userStatus = document.getElementById('userStatus');
+            const currentUserEmail = document.getElementById('currentUserEmail');
+
+            if (token) {
+                authSection.style.display = 'none';
+                shortenerSection.style.display = 'block';
+                dashboardSection.style.display = 'block';
+                userStatus.style.display = 'flex';
+                currentUserEmail.textContent = currentEmail || 'Logged In User';
+                fetchDashboardData();
+            } else {
+                authSection.style.display = 'block';
+                shortenerSection.style.display = 'none';
+                dashboardSection.style.display = 'none';
+                userStatus.style.display = 'none';
+                
+                // Clear any previous results
+                document.getElementById('resultCard').style.display = 'none';
+                document.getElementById('shortenForm').reset();
+            }
+        }
+
+        // Show toast notifications
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            let icon = 'fa-circle-check';
+            if (type === 'error') icon = 'fa-circle-exclamation';
+            
+            toast.innerHTML = `
+                <i class="fa-solid ${icon}"></i>
+                <span>${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Remove toast from DOM after animation completes
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+
+        // Register User handler
+        async function handleRegister(e) {
+            e.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const spinner = document.getElementById('registerSpinner');
+            const submitBtn = document.getElementById('btnRegisterSubmit');
+
+            spinner.style.display = 'inline-block';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE}/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Registration failed');
+                }
+
+                showToast('Account created successfully! Logging you in...');
+                
+                // Automatically perform login
+                await loginRequest(email, password);
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                spinner.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Login User handler
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const spinner = document.getElementById('loginSpinner');
+            const submitBtn = document.getElementById('btnLoginSubmit');
+
+            spinner.style.display = 'inline-block';
+            submitBtn.disabled = true;
+
+            try {
+                await loginRequest(email, password);
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                spinner.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Shared Login request logic (form URL-encoded)
+        async function loginRequest(email, password) {
+            const formData = new URLSearchParams();
+            formData.append('username', email);
+            formData.append('password', password);
+
+            const response = await fetch(`${API_BASE}/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData.toString()
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.detail || 'Login failed. Verify credentials.');
+            }
+
+            token = data.access_token;
+            currentEmail = email;
+            localStorage.setItem('access_token', token);
+            localStorage.setItem('user_email', email);
+            
+            showToast('Welcome back! Logged in successfully.');
+            updateAuthState();
+            
+            // Clean forms
+            document.getElementById('loginForm').reset();
+            document.getElementById('registerForm').reset();
+        }
+
+        // Logout handler
+        function handleLogout() {
+            token = null;
+            currentEmail = null;
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('user_email');
+            showToast('Logged out successfully.');
+            updateAuthState();
+        }
+
+        // Shorten URL handler
+        async function handleShorten(e) {
+            e.preventDefault();
+            const original_url = document.getElementById('originalUrl').value;
+            const expires_at_raw = document.getElementById('expiryDate').value;
+            const spinner = document.getElementById('shortenSpinner');
+            const submitBtn = document.getElementById('btnShortenSubmit');
+
+            spinner.style.display = 'inline-block';
+            submitBtn.disabled = true;
+
+            let expires_at = null;
+            if (isExpiryEnabled && expires_at_raw) {
+                // Convert local date time to UTC/ISO format
+                expires_at = new Date(expires_at_raw).toISOString();
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/shorten`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ original_url, expires_at })
+                });
+
+                const data = await response.json();
+
+                if (response.status === 401) {
+                    handleLogout();
+                    throw new Error('Session expired. Please log in again.');
+                }
+
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Failed to shorten URL');
+                }
+
+                showToast('Short URL generated successfully!');
+                
+                // Show result box
+                const resultCard = document.getElementById('resultCard');
+                const resultUrl = document.getElementById('resultUrl');
+                resultUrl.value = data.short_url;
+                resultCard.style.display = 'flex';
+
+                // Reset shorten input values
+                document.getElementById('originalUrl').value = '';
+                if (isExpiryEnabled) toggleExpiryInput(); // Close picker
+
+                // Refresh dashboard table
+                fetchDashboardData();
+            } catch (err) {
+                showToast(err.message, 'error');
+            } finally {
+                spinner.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Copy generated link to clipboard
+        function copyResultUrl() {
+            const resultUrl = document.getElementById('resultUrl');
+            resultUrl.select();
+            resultUrl.setSelectionRange(0, 99999); // Mobile compatibility
+            navigator.clipboard.writeText(resultUrl.value)
+                .then(() => showToast('Copied to clipboard!'))
+                .catch(() => showToast('Failed to copy', 'error'));
+        }
+
+        // Copy table link directly
+        function copyLinkText(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => showToast('Copied to clipboard!'))
+                .catch(() => showToast('Failed to copy', 'error'));
+        }
+
+        // Fetch user's shortened links for dashboard
+        async function fetchDashboardData() {
+            const tbody = document.getElementById('linksTableBody');
+            
+            try {
+                const response = await fetch(`${API_BASE}/dashboard`, {
+                    method: 'GET',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                const data = await response.json();
+
+                if (response.status === 401) {
+                    handleLogout();
+                    return;
+                }
+
+                if (!response.ok) {
+                    throw new Error('Failed to load dashboard statistics.');
+                }
+
+                tbody.innerHTML = '';
+
+                if (data.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6">
+                                <div class="empty-state">
+                                    <i class="fa-solid fa-link-slash"></i>
+                                    You have not generated any short links yet. Enter a URL above to start!
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                data.forEach(link => {
+                    const row = document.createElement('tr');
+                    
+                    // Format creation date
+                    const createdDate = new Date(link.created_at).toLocaleDateString(undefined, {
+                        month: 'short', day: 'numeric', year: 'numeric'
+                    });
+
+                    // Evaluate expiry status badge
+                    let expiryBadge = '<span class="expiry-badge expiry-permanent">Never</span>';
+                    if (link.expires_at) {
+                        const expiryDateObj = new Date(link.expires_at);
+                        const isExpired = expiryDateObj < new Date();
+                        const formattedExpiry = expiryDateObj.toLocaleDateString(undefined, {
+                            month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                        });
+
+                        if (isExpired) {
+                            expiryBadge = `<span class="expiry-badge expiry-expired" title="Expired at ${formattedExpiry}">Expired</span>`;
+                        } else {
+                            expiryBadge = `<span class="expiry-badge expiry-active" title="Expires at ${formattedExpiry}">Active</span>`;
+                        }
+                    }
+
+                    row.innerHTML = `
+                        <td>
+                            <div class="original-url-cell" title="${link.original_url}">
+                                ${link.original_url}
+                            </div>
+                        </td>
+                        <td>
+                            <a href="${link.short_url}" target="_blank" class="short-url-link">${link.short_url}</a>
+                        </td>
+                        <td>
+                            <span class="click-badge">
+                                <i class="fa-solid fa-chart-simple"></i> ${link.clicks}
+                            </span>
+                        </td>
+                        <td>${expiryBadge}</td>
+                        <td><span style="font-size:0.85rem; color:var(--text-secondary);">${createdDate}</span></td>
+                        <td>
+                            <button class="btn-table-copy" onclick="copyLinkText('${link.short_url}')" title="Copy shortened URL">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+            } catch (err) {
+                showToast(err.message, 'error');
+            }
+        }
+    </script>
+</body>
+</html>
